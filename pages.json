@@ -4,7 +4,7 @@
             "path":"pages/home/home",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+               
                 "enablePullDownRefresh": false
             }
             
@@ -13,7 +13,7 @@
             "path" : "pages/cate/cate",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+               
                 "enablePullDownRefresh": false
             }
             
@@ -22,7 +22,7 @@
             "path" : "pages/cart/cart",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+               
                 "enablePullDownRefresh": false
             }
             
@@ -31,17 +31,33 @@
             "path" : "pages/my/my",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "subpkg/detail/detail",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "subpkg/good_list/good_list",
+            "style" :                                                                                    
+            {
                 "enablePullDownRefresh": false
             }
             
         }
     ],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8",
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "黑马优购",
+		"navigationBarBackgroundColor": "#007AFF",
+		"backgroundColor": "#FFFFFF",
 		"app-plus": {
 			"background": "#efeff4"
 		}
