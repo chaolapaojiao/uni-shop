@@ -1,26 +1,31 @@
 <template>
-	<view class="cate-container">
-		<!-- 左侧滚动条 -->
-		<scroll-view scroll-y="true" class="left" :style="{height:wh+'px'}">
-			<view v-for="(item1,index) in cateList" :key="index" @click="changeSelect(index)"
-			:class="['left-item',current===index?'active':'']">{{item1.cat_name}}</view>
-		</scroll-view>
-		<!-- 右侧滚动条 -->
-		<scroll-view scroll-y="true" class="right" :style="{height:wh+'px'}" :scroll-top="scrollTop">
-			<view v-for="(item2,index) in cateList2" :key="index">
-				<!-- 右侧标题 -->
-				<view class="right-title">
-					{{item2.cat_name}}
+	<view>
+		<!-- 搜索 -->
+		<my-search @click="goSearch"></my-search>
+		<view class="cate-container">
+			<!-- 左侧滚动条 -->
+			<scroll-view scroll-y="true" class="left" :style="{height:wh+'px'}">
+				<view v-for="(item1,index) in cateList" :key="index" @click="changeSelect(index)"
+				:class="['left-item',current===index?'active':'']">{{item1.cat_name}}</view>
+			</scroll-view>
+			<!-- 右侧滚动条 -->
+			<scroll-view scroll-y="true" class="right" :style="{height:wh+'px'}" :scroll-top="scrollTop">
+				<view v-for="(item2,index) in cateList2" :key="index">
+					<!-- 右侧标题 -->
+					<view class="right-title">
+						{{item2.cat_name}}
+					</view>
+					<view class="right-item">
+					<!-- 右侧图片 -->
+					<view v-for="(item3,index) in item2.children" :key="index" class="right-item-list" @click="goToGoods(item3)">
+						<image :src="item3.cat_icon.replace('dev','web')" class="right-item-img"></image>
+						<text>{{item3.cat_name}}</text>
+					</view>
+					</view>
 				</view>
-				<view class="right-item">
-				<!-- 右侧图片 -->
-				<view v-for="(item3,index) in item2.children" :key="index" class="right-item-list" @click="goToGoods(item3)">
-					<image :src="item3.cat_icon.replace('dev','web')" class="right-item-img"></image>
-					<text>{{item3.cat_name}}</text>
-				</view>
-				</view>
-			</view>
-		</scroll-view>
+			</scroll-view>
+		</view>
+		
 	</view>
 </template>
 
@@ -53,6 +58,12 @@
 			goToGoods(item3){
 				uni.navigateTo({
 					url: '/subpkg/goods/goods?cid='+item3.cat_id
+				})
+			},
+			// 跳转到搜索页
+			goSearch(){
+				uni.navigateTo({
+					url:'/subpkg/search/search'
 				})
 			}
 		},

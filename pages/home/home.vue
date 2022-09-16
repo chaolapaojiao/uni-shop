@@ -1,5 +1,8 @@
 <template>
+
 	<view>
+		<!-- 搜索 -->
+		<my-search  @click="goSearch"></my-search>
 		<!-- 轮播图模块 -->
 		<swiper :indicator-dots="true" indicator-active-color="white" :autoplay="true" :interval="1500"  circular
 		:duration="1000" class="swiper">
@@ -82,6 +85,12 @@
 						url: '/pages/cate/cate'
 					})
 				}
+			},
+			// 跳转搜索页
+			goSearch(){
+				uni.navigateTo({
+					url:'/subpkg/search/search'
+				})
 			}
 		},
 		
