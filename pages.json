@@ -40,7 +40,8 @@
             "path" : "subpkg/good_detail/good_detail",
             "style" :                                                                                    
             {
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": false,
+				"backgroundColor": "#FFFFFF"
             }
             
         }
@@ -68,10 +69,7 @@
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "黑马优购",
 		"navigationBarBackgroundColor": "#c00000",
-		"backgroundColor": "#FFFFFF",
-		"app-plus": {
-			"background": "#efeff4"
-		}
+		"backgroundColor": "#FFFFFF"
 	},
 	"tabBar": {
 		"selectedColor": "#c00000",

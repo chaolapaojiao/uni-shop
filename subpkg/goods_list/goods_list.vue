@@ -46,7 +46,7 @@
 			// 跳转详情页
 			goDetail(id){
 				uni.navigateTo({
-					url: '/subpkg/good_detail/good_detail?good_id='+id
+					url: '/subpkg/good_detail/good_detail?goods_id='+id
 				})
 			}
 		},
