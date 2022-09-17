@@ -37,7 +37,7 @@
             
         }
         ,{
-            "path" : "subpkg/detail/detail",
+            "path" : "subpkg/good_detail/good_detail",
             "style" :                                                                                    
             {
                 "enablePullDownRefresh": false
@@ -45,19 +45,12 @@
             
         }
         ,{
-            "path" : "subpkg/good_list/good_list",
+            "path" : "subpkg/goods_list/goods_list",
             "style" :                                                                                    
             {
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "subpkg/goods/goods",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true,
+				"onReachBottomDistance": 200
+				
             }
             
         }

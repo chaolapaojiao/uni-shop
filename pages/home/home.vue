@@ -7,7 +7,7 @@
 		<swiper :indicator-dots="true" indicator-active-color="white" :autoplay="true" :interval="1500"  circular
 		:duration="1000" class="swiper">
 			<swiper-item v-for="(item,index) in swiperList" :key="index" class="swiper-item">
-					<navigator class="swiper-item-con" :url="`/subpkg/detail/detail?goods_id=${item.goods_id}`">
+					<navigator class="swiper-item-con" :url="`/subpkg/good_detail/good_detail?goods_id=${item.goods_id}`">
 						<image :src="item.image_src" class="swiper-img"></image>
 					</navigator>
 			</swiper-item>
@@ -73,7 +73,7 @@
 				if(res.meta.status !== 200) return uni.$showError()
 				res.message.forEach(floor=>{
 					floor.product_list.forEach(item=>{
-						item.url = '/subpkg/good_list/good_list?' + item.navigator_url.split('?')[1]
+						item.url = '/subpkg/goods_list/goods_list?' + item.navigator_url.split('?')[1]
 					})
 				})
 				this.floorList = res.message

@@ -57,7 +57,7 @@
 			// 跳转商品详页
 			goToGoods(item3){
 				uni.navigateTo({
-					url: '/subpkg/goods/goods?cid='+item3.cat_id
+					url: '/subpkg/goods_list/goods_list?cid='+item3.cat_id
 				})
 			},
 			// 跳转到搜索页
