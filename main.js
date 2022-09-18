@@ -27,11 +27,16 @@ uni.$showError=function(title="数据获取失败...",duration=1500){
 		icon:'none'
 	})
 }
-
+// 映入store
+import store from '@/store/store.js'
 App.mpType = 'app'
+// 引入混入
+import tabbar from '@/mixins/tabbar-badge.js'
+Vue.mixin(tabbar)
 
 const app = new Vue({
-    ...App
+    ...App,
+	store
 })
 app.$mount()
 // #endif
