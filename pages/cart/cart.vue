@@ -30,7 +30,7 @@
 				<view class="count">
 					合计<text>￥{{checkedAcount}}.00</text>
 				</view>
-				<view class="btn">
+				<view class="btn" @click="goToOrder">
 					结算<text>({{checkedCount}})</text>
 				</view>
 			</view>
@@ -49,6 +49,8 @@
 	export default {
 		data() {
 			return {
+				time: 3,
+				myTimer: null,
 				options:[{
 					text: '删除',
 					style: {
@@ -64,11 +66,46 @@
 			},
 			changeChecked(){
 				this.$store.commit('my_cart/changeCheckAll',!this.checkAll)
+			},
+			// 跳转结算页面
+			goToOrder(){
+				this.time = 3
+				if(!this.checkedCount) return uni.$showError('请选择商品')
+				if(!this.token) {
+					this.showMessage(this.time)
+					this.myTimer = setInterval(()=>{
+						this.time--
+						if(this.time <= 0){
+							clearInterval(this.myTimer)
+							uni.switchTab({
+								url:'/pages/my/my',
+							})
+							this.$store.commit('my_address/getPathInfo',{
+								type: 'switchTab',
+								url: '/pages/cart/cart'
+							})
+							return 
+						}
+						this.showMessage(this.time)
+					},1000)
+					
+					
+				}
+			},
+			// 提示登录
+			showMessage(n){
+				uni.showToast({
+					title: 	`请登录后在结算,还有${n}秒跳转到登录页面`,
+					mask:true,
+					duration:1500,
+					icon:'none'
+				})
 			}
 			
 		},
 		computed:{
 			...mapState('my_cart',['cart']),
+			...mapState('my_address',['token']),
 			
 			...mapGetters('my_cart', ['checkedCount','total','checkedAcount']),
 			// 全选
