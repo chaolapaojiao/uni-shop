@@ -68,7 +68,7 @@
 				this.$store.commit('my_cart/changeCheckAll',!this.checkAll)
 			},
 			// 跳转结算页面
-			goToOrder(){
+			async goToOrder(){
 				this.time = 3
 				if(!this.checkedCount) return uni.$showError('请选择商品')
 				if(!this.token) {
@@ -91,6 +91,39 @@
 					
 					
 				}
+				
+			// 	let orderInfo = {
+			// 		order_price: this.checkedAcount,
+			// 		consignee_addr: this.address.addr,
+			// 		goods: this.cart.filter(x=>x.goods_state).map(x=>{
+			// 			return {
+			// 			goods_id:x.goods_id,
+			// 			goods_number:x.goods_count,
+			// 			goods_pricex:x.goods_price
+			// 			}
+			// 		})
+			// 	}
+			// 	let {data: res} = await uni.$http.post('/api/public/v1/my/orders/create',orderInfo)
+			// 	const orderNumber = 'GD20180507000000000110'
+			// 	const {data:res2} = await uni.$http.post('//api/public/v1/my/orders/req_unifiedorder',{order_number: orderNumber})
+			// 	const payInfo =  {
+			// 	  "timeStamp": "1525681145",
+			// 	  "nonceStr": "BkPggorBXZwPGXe3",
+			// 	  "package": "prepay_id=wx071619042918087bb4c1d3d72999385683",
+			// 	  "signType": "MD5",
+			// 	  "paySign": "D1642DEEF1663C8012EDEB9297E1D516"
+			// }
+			// 	const [err,res3] = await uni.requestPayment(payInfo)
+			
+				uni.showToast({
+				title:"支付成功",
+				duration:2000
+				})
+			this.cart.forEach(item=>{
+				if(item.goods_state){
+					this.$store.commit('my_cart/deleteGood',item.goods_id)
+				}
+			})
 			},
 			// 提示登录
 			showMessage(n){
@@ -105,7 +138,7 @@
 		},
 		computed:{
 			...mapState('my_cart',['cart']),
-			...mapState('my_address',['token']),
+			...mapState('my_address',['token','address']),
 			
 			...mapGetters('my_cart', ['checkedCount','total','checkedAcount']),
 			// 全选
